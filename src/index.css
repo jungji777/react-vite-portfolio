@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 29 29 31;
+    --primary: 0 113 227;
+    --muted: 229 231 235;
+    --muted-foreground: 107 114 128;
+    
+    /* Light theme specific colors */
+    --accent-light: 236 242 254;
+    --surface-light: 250 250 250;
+    --border-light: 229 231 235;
+  }
+
+  .dark {
+    --background: 15 15 15;
+    --foreground: 255 255 255;
+    --primary: 0 113 227;
+    --muted: 26 26 26;
+    --muted-foreground: 156 163 175;
+    
+    /* Dark theme specific colors */
+    --accent-dark: 30 41 59;
+    --surface-dark: 24 24 27;
+    --border-dark: 39 39 42;
+  }
+
+  .theme-transition {
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Enhanced focus styles */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  /* Consistent button styles across themes */
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90
+           dark:hover:bg-primary/80;
+  }
+
+  .btn-secondary {
+    @apply bg-muted text-foreground hover:bg-muted/80
+           dark:bg-muted dark:hover:bg-muted/60;
+  }
+
+  /* Card styles with consistent shadows */
+  .card {
+    @apply bg-white dark:bg-background
+           border border-muted dark:border-muted
+           rounded-xl shadow-sm hover:shadow-md
+           transition-all duration-200;
+  }
+
+  /* Input styles */
+  .input {
+    @apply bg-white dark:bg-background
+           border border-muted dark:border-muted
+           rounded-lg px-4 py-2
+           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
+           transition-all duration-200;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(to right, rgb(var(--primary)), rgb(var(--primary)/0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+
+  /* Skill icon animations */
+  .animate-ts {
+    animation: pulse-rotate 3s infinite;
+  }
+
+  .animate-react {
+    animation: spin 10s linear infinite;
+  }
+
+  .animate-vite {
+    animation: bounce-subtle 2s infinite;
+  }
+
+  .animate-js {
+    animation: pulse-scale 2s infinite;
+  }
+
+  .animate-affinity {
+    animation: morph 4s infinite;
+  }
+
+  .animate-photo {
+    animation: glow 3s infinite;
+  }
+
+  .animate-davinci {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-finalcut {
+    animation: pulse-opacity 2s infinite;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-rotate {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse-scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes morph {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-opacity {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
